@@ -1,0 +1,75 @@
+{%extends 'base.html'%}
+
+{%block body%}
+
+         <div class="page">
+    <div class="row">
+{%for commande in com%}
+    <div class="col-sm card">
+            <div class="card card-cascade card-ecommerce wider shadow mb-5 ">
+                        <div class="mask rgba-white-slight"></div>
+            </div>
+                <div class="card-body card-body-cascade text-center">
+                    <h4 class="card-title"><strong>{{commande.duree_garantie}}</strong></h4> <!-- Card Description-->
+                    <p class="card-text">{{commande.duree_garantie}} </p>
+                    <p class="card-text">{{commande.dateCde}}</p> <!-- Card Rating-->
+                    <p class="card-text">{{commande.totalCde}}</p> <!-- Card Rating-->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#model{{ commande.id }}">
+    View panier
+</button>
+        <a href="{% url 'deletecom' commande.id%}" class="btn btn-danger">Delete</a>
+
+                </div>
+            </div>
+
+        {%endfor%}
+
+
+
+    </div>
+
+    </div>
+    </div>
+    <!-- Button trigger modal -->
+
+
+<!-- Modal -->
+    {%for commande in com%}
+
+<div class="modal fade col-md-" id="model{{ commande.id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">{{ commande.id }}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <div class="row">
+
+        {%  for prod in commande.produits.all %}
+            <div class="card card-cascade card-ecommerce wider shadow mb-5 ">
+                <div class="view view-cascade overlay text-center"> <img class="card-img-top" src="{{MEDIA_URL}}{{prod.img}}" alt=""> <a>
+                        <div class="mask rgba-white-slight"></div>
+                    </a> </div>
+                <div class="card-body card-body-cascade text-center">
+                    <h4 class="card-title"><strong><a href="">{{prod.libelle}}</a></strong></h4> <!-- Card Description-->
+                    <p class="card-text">{{prod.description}} </p>
+                    <p class="price">{{prod.prix}}</p> <!-- Card Rating-->
+
+
+            </div>
+        </div>
+            {%  endfor %}
+      </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+{% endfor %}
+{%endblock%}

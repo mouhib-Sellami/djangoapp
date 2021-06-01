@@ -1,0 +1,30 @@
+{%extends 'base.html'%}
+
+{%block body%}
+     <div class="page">
+     <div class="row col-md-3 mt-5 mb-5"><a href="{%  url 'addforni' %}" class="btn btn-success ">Add Fornisseur</a></div>
+    <div class="row">
+{%for forni in list%}
+    <div class="col-sm card">
+            <div class="card card-cascade card-ecommerce wider shadow mb-5 ">
+                        <div class="mask rgba-white-slight"></div>
+            </div>
+                <div class="card-body card-body-cascade text-center">
+                    <h4 class="card-title"><strong>{{forni.nom}}</strong></h4> <!-- Card Description-->
+                    <p class="card-text">{{forni.email}} </p>
+                    <p class="card-text">{{forni.adresse}}</p> <!-- Card Rating-->
+    <a href="{%url 'forniprod' forni.id%}" class="btn btn-success">{{forni.telephone}}</a>
+    <a class="btn btn-warning">Edit</a>
+        <a href="{%url 'deleteforni' forni.id%}" class="btn btn-danger">Delete</a>
+
+                </div>
+            </div>
+
+        {%endfor%}
+
+    </div>
+
+    </div>
+    </div>
+
+{%endblock%}

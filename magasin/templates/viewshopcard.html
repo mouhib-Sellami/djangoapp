@@ -1,0 +1,23 @@
+{%extends 'base.html'%}
+
+{%block body%}
+<div class="row ">
+<div class="text-center">
+<p>{{com.dateCde}}</p>
+<p>{{com.duree_garantie}}</p>
+<p>{{com.totalCde}}</p>
+</div>
+{%for prod in com.produits.all%}
+<div class="col-md-3">
+<div class="card" style="width: 18rem;">
+  <img class="card-img-top" src="{{MEDIA_URL}}{{prod.img}}" alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title">{{prod.libelle}}</h5>
+    <p class="card-text">{{prod.description}}</p>
+    <a href="#" class="btn btn-primary">{{prod.prix}}</a>
+  </div>
+</div>
+</div>
+{%endfor%}
+</div>
+{%endblock%}

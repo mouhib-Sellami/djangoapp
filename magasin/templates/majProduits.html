@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %} Mes Produit {% endblock %}
+
+{% block body %}
+ <div class="page  d-flex justify-content-center">
+    <div class="row  col-md-8">
+<form method="post" class="form "  enctype="multipart/form-data">
+{% csrf_token %}
+{{form.as_table}}
+<input type="submit" class="btn btn-success mt-3" value="Add">
+</form>
+    </div>
+</div>
+{% endblock %}

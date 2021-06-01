@@ -1,0 +1,27 @@
+{%extends 'base.html'%}
+
+{%block body%}
+
+    <div class="page">
+    <div class="row">
+        {%for prod in list%}
+        <div class="col-sm">
+            <div class="card card-cascade card-ecommerce wider shadow mb-5 ">
+                <div class="view view-cascade overlay text-center"> <img class="card-img-top" src="{{MEDIA_URL}}{{prod.img}}" alt=""> <a>
+                        <div class="mask rgba-white-slight"></div>
+                    </a> </div>
+                <div class="card-body card-body-cascade text-center">
+                    <h4 class="card-title"><strong><a href="">{{prod.libelle}}</a></strong></h4> <!-- Card Description-->
+                    <p class="card-text">{{prod.description}} </p>
+                    <p class="price">{{prod.prix}}</p> <!-- Card Rating-->
+
+
+                </div>
+            </div>
+        </div>
+        {%endfor%}
+
+    </div>
+    </div>
+
+{%endblock%}
